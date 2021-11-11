@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang='ru'><br />
 <head><br />
-  <title>Учебный файл HTML</title><br />
+  <title>Г“Г·ГҐГЎГ­Г»Г© ГґГ Г©Г« HTML</title><br />
 </head><br />
 <body></p>
 <h1><span>My Schedule</span></h1>
@@ -16,67 +16,67 @@
 </tr>
 <tr>
 <td bgcolor='black'><font color='white'>9:00-9:40</font></td>
-<td>Инф безоп</td>
-<td>Инф безоп</td>
-<td>Опер сист</td>
-<td>Разр п/о</td>
-<td>Физ-ра</td>
+<td>Г€Г­Гґ ГЎГҐГ§Г®ГЇ</td>
+<td>Г€Г­Гґ ГЎГҐГ§Г®ГЇ</td>
+<td>ГЋГЇГҐГ° Г±ГЁГ±ГІ</td>
+<td>ГђГ Г§Г° ГЇ/Г®</td>
+<td>Г”ГЁГ§-Г°Г </td>
 </tr>
 <tr>
 <td bgcolor='black'><font color='white'>9:45-10:25</font></td>
-<td>Инф безоп</td>
-<td>Инф безоп</td>
-<td>Опер сист</td>
-<td>Разр п/о</td>
-<td>Физ-ра</td>
+<td>Г€Г­Гґ ГЎГҐГ§Г®ГЇ</td>
+<td>Г€Г­Гґ ГЎГҐГ§Г®ГЇ</td>
+<td>ГЋГЇГҐГ° Г±ГЁГ±ГІ</td>
+<td>ГђГ Г§Г° ГЇ/Г®</td>
+<td>Г”ГЁГ§-Г°Г </td>
 </tr>
 <tr>
 <td bgcolor='black'><font color='white'>10:30-11:10</font></td>
-<td>Разр п/о</td>
-<td>Опер сист</td>
-<td>Инф безоп</td>
-<td>Сопр п/о</td>
-<td>Сопр п/о</td>
+<td>ГђГ Г§Г° ГЇ/Г®</td>
+<td>ГЋГЇГҐГ° Г±ГЁГ±ГІ</td>
+<td>Г€Г­Гґ ГЎГҐГ§Г®ГЇ</td>
+<td>Г‘Г®ГЇГ° ГЇ/Г®</td>
+<td>Г‘Г®ГЇГ° ГЇ/Г®</td>
 </tr>
 <tr>
 <td bgcolor='black'><font color='white'>11:15-11:55</font></td>
-<td>Разр п/о</td>
-<td>Опер сист</td>
-<td>Инф безоп</td>
-<td>Сопр п/о</td>
-<td>Сопр п/о</td>
+<td>ГђГ Г§Г° ГЇ/Г®</td>
+<td>ГЋГЇГҐГ° Г±ГЁГ±ГІ</td>
+<td>Г€Г­Гґ ГЎГҐГ§Г®ГЇ</td>
+<td>Г‘Г®ГЇГ° ГЇ/Г®</td>
+<td>Г‘Г®ГЇГ° ГЇ/Г®</td>
 </tr>
 <tr>
 <td bgcolor='black'><font color='white'>12:20-13:00</font></td>
-<td>Сопр п/о</td>
-<td>Разр п/о</td>
-<td>Разр п/о</td>
-<td>Инф менед</td>
-<td>Инф менед</td>
+<td>Г‘Г®ГЇГ° ГЇ/Г®</td>
+<td>ГђГ Г§Г° ГЇ/Г®</td>
+<td>ГђГ Г§Г° ГЇ/Г®</td>
+<td>Г€Г­Гґ Г¬ГҐГ­ГҐГ¤</td>
+<td>Г€Г­Гґ Г¬ГҐГ­ГҐГ¤</td>
 </tr>
 <tr>
 <td bgcolor='black'><font color='white'>13:05-13:45</font></td>
-<td>Сопр п/о</td>
-<td>Разр п/о</td>
-<td>Разр п/о</td>
-<td>Инф менед</td>
-<td>Инф менед</td>
+<td>Г‘Г®ГЇГ° ГЇ/Г®</td>
+<td>ГђГ Г§Г° ГЇ/Г®</td>
+<td>ГђГ Г§Г° ГЇ/Г®</td>
+<td>Г€Г­Гґ Г¬ГҐГ­ГҐГ¤</td>
+<td>Г€Г­Гґ Г¬ГҐГ­ГҐГ¤</td>
 </tr>
 <tr>
 <td bgcolor='black'><font color='white'>13:50-14:30</font></td>
-<td>Ин язык</td>
-<td>Сопр п/о</td>
+<td>Г€Г­ ГїГ§Г»ГЄ</td>
+<td>Г‘Г®ГЇГ° ГЇ/Г®</td>
 <td></td>
 <td></td>
-<td>Опер сист</td>
+<td>ГЋГЇГҐГ° Г±ГЁГ±ГІ</td>
 </tr>
 <tr>
 <td bgcolor='black'><font color='white'>14:35-15:15</font></td>
-<td>Ин язык</td>
-<td>Сопр п/о</td>
+<td>Г€Г­ ГїГ§Г»ГЄ</td>
+<td>Г‘Г®ГЇГ° ГЇ/Г®</td>
 <td></td>
 <td></td>
-<td>Опер сист</td>
+<td>ГЋГЇГҐГ° Г±ГЁГ±ГІ</td>
 </tr>
 </table>
 </table>
