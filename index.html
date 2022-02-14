@@ -2,49 +2,75 @@
   <title>:З</title><br />
 </head><br />
 <body>
-<p>nmtui                     - network менеджер(ip, dns, gateway/ hostname)</br>
+<p>nmtui------------------- network менеджер(ip, dns, gateway/ hostname)</br>
 </br>
-nano /etc/sysctl.conf     - включение forwarding</br>
-  net.ipv4.ip_forward=1</br>
+nano /etc/sysctl.conf------ включение forwarding</br>
+--net.ipv4.ip_forward=1</br>
 </br>
-geten force               - проверка selinux</br>
-nano /etc/selinux/config  - отключение selinux (для нормального подключения по ip)</br>
-  selinux=disabled</br>
+geten force---------------- проверка selinux</br>
+nano /etc/selinux/config--- отключение selinux (для нормального подключения по ip)</br>
+--selinux=disabled</br>
 </br>
-nano /etc/nsswitch.conf   - более высокий приоритет для DNS</br>
-  hosts dns files</br>
-  network dns files</br>
+nano /etc/nsswitch.conf---- более высокий приоритет для DNS</br>
+--hosts dns files</br>
+--network dns files</br>
 </br>
-nano /etc/ssh/sshd_config - доступ к аккаунту root по ssh</br>
-  #port 22</br>
-  PermitRootLogin yes</br>
+nano /etc/ssh/sshd_config-- доступ к аккаунту root по ssh</br>
+--#port 22</br>
+--PermitRootLogin yes</br>
 ____</br>
 </br>
 firewall-cmd --permanent --zone=trusted(dmz) --add-interface=...(ens192)</br> 
 </br>
-firewall-cmd --permanent --add-masquerade --zone=dmz -включить маскарадинг</br>
-firewall-cmd --reload     - перезагрузка</br>
+firewall-cmd --permanent --zone=dmz --add-masquerade -включить маскарадинг</br>
 firewall-cmd --list-all --zone=...(dmz) - вывод зоны</br>
 </br>
 firewall-cmd --permanent --zone=trusted --add-forward-port=port=3128:proto=tcp:\</br>
 toport=3128:toaddr=10.10.10.10 - добавить forward порт</br>
 firewall-cmd --permanent --zone=trusted --add-port=3128/tcp</br>
+firewall-cmd --permanent --add-protocol=ospf --zone=trusted/dmz - разрешить ospf на fw
+nano /etc/services
+--2601/tcp/udp zebra 
+--2604/tcp/udp ospfd
+firewall-cmd --permanent --add-port=2601/tcp --zone=trusted/dmz - разрешения для zebra и ospf
+firewall-cmd --permanent --add-port=2601/udp --zone=trusted/dmz
+firewall-cmd --permanent --add-port=2604/tcp --zone=trusted/dmz
+firewall-cmd --permanent --add-port=2604/udp --zone=trusted/dmz
+firewall-cmd --reload------ перезагрузка</br>
 </br>
 nano /etc/yum.conf</br>
-  (L-FW)proxy=http://10.10.10.10:3128 - настройка proxy</br>
-  yum update - проверка</br>
-  (остальные)proxy=http://10.10.10.1:3128</br>
+--(L-FW)proxy=http://10.10.10.10:3128 - настройка proxy</br>
+yum update - проверка</br>
+--(остальные)proxy=http://10.10.10.1:3128</br>
 </br>
-yum install -y frr       - установка frr</br>
+yum install -y frr-------- установка frr</br>
 nano /etc/frr/daemons</br>
-  zebra=yes              - настройка frr</br>
-  ospfd=yes</br>
-systemctl enable frr    - добавить frr в автозагрузку</br>
+--zebra=yes--------------- настройка frr</br>
+--ospfd=yes</br>
+systemctl enable frr------ добавить frr в автозагрузку</br>
 </br>
-
-
-
-
-
+systemctl disable firewalld - выключить фаервол(кроме fw)</br>
+</br>
+vtysh</br>
+conf t</br>
+--router ospf------------- включить ospf</br>
+----passive-interface default------ сделать все интерфейсы пассивными</br>
+----no passive-interface ens161---- включить интерфейс</br>
+----no passive-interface ens161</br>
+----network 172.16.20.0/24 area 0 - обЪявить сеть</br>
+----network 172.16.50.0/30 area 0</br>
+...</br>
+--int ens161</br>
+----ip ospf network broadcast</br>
+----ip ospf mtu-ignore</br>
+</br>
+--int lol----------------- лупбэк(везде кроме главного маршрутизатора)</br>
+----ip add 2.2.2.2/32</br>
+----no sh</br>
+--router-id 2.2.2.2</br>
+</br>
+wr------------------------ сохранить настройки</br>
+sh ip ospf neighbor------- просмотр соседей</br>
+</br>
 netstat -rn</p>
 </body>
