@@ -1,79 +1,50 @@
 <head><br />
-  <title>Ó÷åáíûé ôàéë HTML</title><br />
+  <title>:З</title><br />
 </head><br />
 <body>
-<h1><span>My Schedule</span></h1>
-<table border='1' width='50%'>
-<tr>
-<th width='13%'>Day</th>
-<th width='15%' bgcolor='black'><font color='white'>Monday</font></th>
-<th width='15%' bgcolor='black'><font color='white'>Tuesday</font></th>
-<th width='15%' bgcolor='black'><font color='white'>Wednesday</font></th>
-<th width='15%' bgcolor='black'><font color='white'>Thursday</font></th>
-<th width='15%' bgcolor='black'><font color='white'>Friday</font></th>
-</tr>
-<tr>
-<td bgcolor='black'><font color='white'>9:00-9:40</font></td>
-<td>Èíô áåçîï</td>
-<td>Èíô áåçîï</td>
-<td>Îïåð ñèñò</td>
-<td>Ðàçð ï/î</td>
-<td>Ôèç-ðà</td>
-</tr>
-<tr>
-<td bgcolor='black'><font color='white'>9:45-10:25</font></td>
-<td>Èíô áåçîï</td>
-<td>Èíô áåçîï</td>
-<td>Îïåð ñèñò</td>
-<td>Ðàçð ï/î</td>
-<td>Ôèç-ðà</td>
-</tr>
-<tr>
-<td bgcolor='black'><font color='white'>10:30-11:10</font></td>
-<td>Ðàçð ï/î</td>
-<td>Îïåð ñèñò</td>
-<td>Èíô áåçîï</td>
-<td>Ñîïð ï/î</td>
-<td>Ñîïð ï/î</td>
-</tr>
-<tr>
-<td bgcolor='black'><font color='white'>11:15-11:55</font></td>
-<td>Ðàçð ï/î</td>
-<td>Îïåð ñèñò</td>
-<td>Èíô áåçîï</td>
-<td>Ñîïð ï/î</td>
-<td>Ñîïð ï/î</td>
-</tr>
-<tr>
-<td bgcolor='black'><font color='white'>12:20-13:00</font></td>
-<td>Ñîïð ï/î</td>
-<td>Ðàçð ï/î</td>
-<td>Ðàçð ï/î</td>
-<td>Èíô ìåíåä</td>
-<td>Èíô ìåíåä</td>
-</tr>
-<tr>
-<td bgcolor='black'><font color='white'>13:05-13:45</font></td>
-<td>Ñîïð ï/î</td>
-<td>Ðàçð ï/î</td>
-<td>Ðàçð ï/î</td>
-<td>Èíô ìåíåä</td>
-<td>Èíô ìåíåä</td>
-</tr>
-<tr>
-<td bgcolor='black'><font color='white'>13:50-14:30</font></td>
-<td>Èí ÿçûê</td>
-<td>Ñîïð ï/î</td>
-<td></td>
-<td></td>
-<td>Îïåð ñèñò</td>
-</tr>
-<tr>
-<td bgcolor='black'><font color='white'>14:35-15:15</font></td>
-<td>Èí ÿçûê</td>
-<td>Ñîïð ï/î</td>
-<td></td>
-<td></td>
-<td>Îïåð ñèñò</td>
-</tr>
-</table>
+<p>nmtui                     - network менеджер(ip, dns, gateway/ hostname)
+
+nano /etc/sysctl.conf     - включение forwarding
+  net.ipv4.ip_forward=1
+
+geten force               - проверка selinux
+nano /etc/selinux/config  - отключение selinux (для нормального подключения по ip)
+  selinux=disabled
+
+nano /etc/nsswitch.conf   - более высокий приоритет для DNS
+  hosts dns files
+  network dns files
+
+nano /etc/ssh/sshd_config - доступ к аккаунту root по ssh
+  #port 22
+  PermitRootLogin yes
+____
+
+firewall-cmd --permanent --zone=trusted(dmz) --add-interface=...(ens192)   
+
+firewall-cmd --permanent --add-masquerade --zone=dmz -включить маскарадинг
+firewall-cmd --reload     - перезагрузка
+firewall-cmd --list-all --zone=...(dmz) - вывод зоны
+
+firewall-cmd --permanent --zone=trusted --add-forward-port=port=3128:proto=tcp:\
+toport=3128:toaddr=10.10.10.10 - добавить forward порт
+firewall-cmd --permanent --zone=trusted --add-port=3128/tcp 
+
+nano /etc/yum.conf
+  (L-FW)proxy=http://10.10.10.10:3128 - настройка proxy
+  yum update - проверка
+  (остальные)proxy=http://10.10.10.1:3128
+ 
+yum install -y frr       - установка frr
+nano /etc/frr/daemons
+  zebra=yes              - настройка frr
+  ospfd=yes 
+systemctl enable frr    - добавить frr в автозагрузку
+
+
+
+
+
+
+netstat -rn</p>
+</body>
