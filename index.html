@@ -18,7 +18,7 @@ nano /etc/nsswitch.conf---- более высокий приоритет для 
 nano /etc/ssh/sshd_config-- доступ к аккаунту root по ssh</br>
 --#port 22</br>
 --PermitRootLogin yes</br>
-____</br>
+_________________________</br>
 </br>
 firewall-cmd --permanent --zone=trusted(dmz) --add-interface=...(ens192)</br> 
 </br>
@@ -28,14 +28,14 @@ firewall-cmd --list-all --zone=...(dmz) - вывод зоны</br>
 firewall-cmd --permanent --zone=trusted --add-forward-port=port=3128:proto=tcp:\</br>
 toport=3128:toaddr=10.10.10.10 - добавить forward порт</br>
 firewall-cmd --permanent --zone=trusted --add-port=3128/tcp</br>
-firewall-cmd --permanent --add-protocol=ospf --zone=trusted/dmz - разрешить ospf на fw
-nano /etc/services
---2601/tcp/udp zebra 
---2604/tcp/udp ospfd
-firewall-cmd --permanent --add-port=2601/tcp --zone=trusted/dmz - разрешения для zebra и ospf
-firewall-cmd --permanent --add-port=2601/udp --zone=trusted/dmz
-firewall-cmd --permanent --add-port=2604/tcp --zone=trusted/dmz
-firewall-cmd --permanent --add-port=2604/udp --zone=trusted/dmz
+firewall-cmd --permanent --add-protocol=ospf --zone=trusted/dmz - разрешить ospf на fw</br>
+nano /etc/services</br>
+--2601/tcp/udp zebra</br>
+--2604/tcp/udp ospfd</br>
+firewall-cmd --permanent --add-port=2601/tcp --zone=trusted/dmz - разрешения для zebra и ospf</br>
+firewall-cmd --permanent --add-port=2601/udp --zone=trusted/dmz</br>
+firewall-cmd --permanent --add-port=2604/tcp --zone=trusted/dmz</br>
+firewall-cmd --permanent --add-port=2604/udp --zone=trusted/dmz</br>
 firewall-cmd --reload------ перезагрузка</br>
 </br>
 nano /etc/yum.conf</br>
@@ -71,6 +71,27 @@ conf t</br>
 </br>
 wr------------------------ сохранить настройки</br>
 sh ip ospf neighbor------- просмотр соседей</br>
+_______________________</br>
+yum install -y dhcp-server-установить dhcp(основной dhcp)</br>
+nano /etc/dhcp/dhcpd.conf</br>
+cp /usr/share/doc/dhcp-server/dhcpd.conf.example /etc/dhcp/dhcpd.conf - копировать файл</br>
+nano /etc/dhcp/dhcpd.conf - настройка dhcp</br>
+--subnet 172.16.100.0 netmask 255.255.255.0{ - область</br>
+--range 172.16.100.65 172.16.100.75;---------- диапозон адресов</br>
+--...172.16.20.10----------------------------- dns-сервер</br>
+--...skill39.wsr------------------------------ домен</br>
+--option routers 172.16.100.1----------------- шлюз</br>
+--...172.16.100.255}-------------------------- broadcast</br>
+(повторяем для другой области)</br>
+subnet 172.16.50.0 netmask 255.255.255.252 {</br>
+}------------------------- для прослушивания запросов</br>
+systemctl enable dhcpd---- добавление в автозагрузку</br>
+dhclient -v--------------- проверить получение ip</br>
 </br>
-netstat -rn</p>
+yum install -y dhcp-relay</br>
+nano /usr/lib/systemd/system/dhcrelay.service</br>
+--ExecStart... 172.16.50.2</br>
+systemctl enable dhcrelay</br>
+</br>
+netstat -rn</p></br>
 </body>
